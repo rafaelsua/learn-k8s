@@ -1,0 +1,17 @@
+# la version del api que vamos a usar en kubernetes
+apiVersion : v1
+# tipo de elemento de despliegue en kubernetes
+kind : Service
+metadata:
+  name: miservicio-nginx
+spec:
+  type: NodePort
+  ports:
+    #este es el puerto de destino nginx corre en el 80
+    - targetPort: 80
+      #puerto del servicio
+      port: 80
+      # puerto externo el puerto del nodo que se publica
+      nodePort: 30001
+  selector:
+    tipo: web
