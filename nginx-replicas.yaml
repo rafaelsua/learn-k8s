@@ -1,0 +1,24 @@
+# la version del api que vamos a usar en kubernetes
+apiVersion : v1
+# tipo de elemento de despliegue en kubernetes
+kind : ReplicationController
+metadata:
+  name: mi-nginx-replica
+  labels:
+    tipo: servidor-web
+spec:
+  # es el que define la plantilaa para el replicador
+  template:
+    metadata:
+      name: mi-nginx
+      labels: 
+        tipo: servidor-web
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx 
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: 1
+  replicas: 2
