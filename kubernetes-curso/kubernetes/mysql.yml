@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-mysql
+  labels:
+    app: mi-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mi-mysql
+  template:
+    metadata:
+      labels:
+        app: mi-mysql
+    spec:
+      containers:
+      - name: mi-mysql
+        image: mysql:5.7
+        resources:
+            limits: 
+              memory: 512Mi
+              cpu: "1"
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "password"
+        - name: MYSQL_DATABASE
+          value: "web1"
+        - name: MYSQL_USER
+          value: "web1"
+        - name: MYSQL_PASSWORD
+          value: "web1"
+
+        volumeMounts:
+          - name: mysql-initdb
+            mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: mysql-initdb
+          configMap:
+             name: mysql-initdb-config
+         
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-config
+data:
+  initdb.sql: |
+    CREATE TABLE Personas (nombre varchar(20));
+    INSERT INTO Personas VALUES ('gema');
+    INSERT INTO Personas VALUES ('maria');
+

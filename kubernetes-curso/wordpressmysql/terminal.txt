@@ -1,0 +1,3 @@
+kubectl exec --stdin --tty mi-mysql-58b45c4685-kw464 -- /bin/bash
+kubectl port-forward deployment/mi-wordpress 8080:80
+kubectl port-forward mi-app 8080:8080

@@ -1,0 +1,17 @@
+# la verion del api que  vamos a usar en kubernetes
+apiVersion : v1
+# tipo de elemento de despliegue en kubernetes
+kind : Service
+metadata :
+  name: miservicio-wordpress
+spec:
+  type: NodePort
+  ports:
+    #este es el puerto de destino mysql corre en el 3306
+    - targetPort: 80
+      # puerto del servicio
+      port: 80
+      # puerto externo el puerto del nodo que se publica
+      nodePort: 30003 
+  selector: 
+     app: mi-wordpress

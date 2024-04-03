@@ -1,0 +1,14 @@
+# la version del api que vamos a usar en kubernetes
+apiVersion : v1
+# tipo de elemento de despliegue en kubernetes
+kind : Pod
+metadata:
+  name: mi-nginx
+spec:
+  containers:
+    - name: nginx
+      image: nginx 
+      resources:
+        limits:
+          memory: 512Mi
+          cpu: 1

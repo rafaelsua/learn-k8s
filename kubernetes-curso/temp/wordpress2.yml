@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-wordpress2
+  labels:
+    app: mi-wordpress2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mi-wordpress2
+  template:
+    metadata:
+      labels:
+        app: mi-wordpress2
+    spec:
+      containers:
+      - name: mi-wordpress2
+        image: wordpress:latest
+        resources:
+            limits: 
+              memory: 512Mi
+              cpu: "1"
+        ports:
+        - containerPort: 80
+       

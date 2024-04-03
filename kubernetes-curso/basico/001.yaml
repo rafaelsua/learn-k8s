@@ -1,0 +1,19 @@
+nombre: juan
+apellidos: gomez
+edad: 20
+direccion:
+  calle: calle1
+  numero: 10
+  info:
+    turistica: si
+dispositivos:
+  - airpods
+  - tablet
+  - ordenador
+cursos:
+  - Java: cursojava
+    nivel: 1
+    horas: 30
+  - PHP: cursophp
+    nivel: 2
+    horas: 20

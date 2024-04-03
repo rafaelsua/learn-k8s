@@ -1,0 +1,17 @@
+# la verion del api que  vamos a usar en kubernetes
+apiVersion : v1
+# tipo de elemento de despliegue en kubernetes
+kind : Pod
+metadata :
+  name: mi-app
+  labels:
+    app: web
+spec:
+  containers:
+    - name: mi-app
+      #docker hub y me voy a traer mi aplicacion
+      image: cmac/miapp2
+      resources:
+        limits: 
+          memory: 512Mi
+          cpu: 1
