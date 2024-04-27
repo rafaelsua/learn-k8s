@@ -3,13 +3,12 @@ apiVersion : v1
 # tipo de elemento de despliegue en kubernetes
 kind : Service
 metadata :
-  name: miservicio-wordpress-2
+  name: miservicio-wordpress
 spec:
   type: NodePort
   ports:
     #este es el puerto de destino wordpress corre en el 80
     - port: 80
-      targetPort: 80
       # puerto externo el puerto del nodo que se publica
       nodePort: 30040 
   selector: 
