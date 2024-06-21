@@ -8,7 +8,7 @@ spec:
   containers:
     - name: mi-app
       #docker hub y me voy a traer mi aplicacion
-      image: cmac/miapp
+      image: dhaker/miapp
       resources:
         limits: 
           memory: 512Mi
